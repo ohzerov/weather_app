@@ -1,4 +1,4 @@
-# weather_app
+# weatherapp
 
 A new Flutter project.
 
