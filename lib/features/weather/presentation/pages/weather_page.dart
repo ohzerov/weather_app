@@ -13,7 +13,7 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   TextEditingController controller = TextEditingController();
-  String cityName = 'vbjcrdEarth';
+  String cityName = 'Earth';
   String currentTemp = '0';
   String weatherEmoji = '✨';
 
@@ -61,7 +61,7 @@ class _WeatherPageState extends State<WeatherPage> {
       weatherEmoji = weatherEmojis[weather.condition.toLowerCase()] ?? '✨';
       currentTemp = weather.temp.round().toString();
       isLoading = false;
-      startTimer(city);
+      startTimer(cityName);
       setState(() {});
     } catch (e) {
       setState(() {
@@ -79,8 +79,8 @@ class _WeatherPageState extends State<WeatherPage> {
           TextSpan(text: 'Current weather ', children: [
             TextSpan(
                 text: isLoading ? "on Earth" : 'in $cityName $weatherEmoji',
-                style: const TextStyle(
-                    color: const Color.fromARGB(255, 8, 146, 226))),
+                style:
+                    const TextStyle(color: Color.fromARGB(255, 8, 146, 226))),
           ]),
         ),
       ),
@@ -101,8 +101,13 @@ class _WeatherPageState extends State<WeatherPage> {
               SizedBox(
                 height: 55,
                 child: TextField(
+                  cursorColor: Colors.blue,
                   controller: controller,
                   decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(
+                            width: 2, color: Color.fromARGB(255, 8, 146, 226))),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: const BorderSide(
@@ -122,10 +127,11 @@ class _WeatherPageState extends State<WeatherPage> {
                                 controller.text.trim(),
                               ),
                         child: const Icon(
+                          color: Colors.blue,
                           Icons.refresh,
                           size: 20,
                         )),
-                    label: const Text("Change City"),
+                    // label: const Text("Change City"),
                   ),
                 ),
               ),
