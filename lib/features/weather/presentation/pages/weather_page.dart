@@ -75,6 +75,7 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text.rich(
           TextSpan(text: 'Current weather ', children: [
             TextSpan(
